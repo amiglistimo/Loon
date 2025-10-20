@@ -16,7 +16,7 @@ Task-manmanbuy = switch, true, false, tag = [manmanbuy]每日签到Task, desc = 
 Cron-manmanbuy = input, "15 0 * * *", tag = [manmanbuy]定时参数Cron, desc = 输入Cron表达式来定时运行[manmanbuy]每日签到Task
 
 [Rule]
-DOMAIN, www.manmanbuy.com, DIRECT
+DOMAIN, apph5.manmanbuy.com, DIRECT
 DOMAIN-SUFFIX, manmanbuy.com, DIRECT
 
 [Script]
