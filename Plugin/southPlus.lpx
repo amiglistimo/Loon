@@ -1,0 +1,26 @@
+#!name = SouthPlus
+#!desc = SouthPlus每日签到。打开网站，点击社区论坛任务。
+#!openUrl = https://south-plus.net/
+#!author = Sliverkiss[https://github.com/Sliverkiss]
+#!tag = 定时任务
+#!system = 
+#!system_version = 
+#!loon_version = 3.3.5(904)
+#!homepage = https://github.com/Sliverkiss/QuantumultX
+#!icon = https://raw.githubusercontent.com/Sliverkiss/QuantumultX/main/icon/gril.png
+#!date = 2025-10-20 00:00
+
+[Argument]
+# SouthPlus 自动任务脚本的开关，用于在UI界面快捷启用或禁用
+Enable-SouthPlus-Tasks = switch, true, false, tag = [SouthPlus]自动任务, desc = 启用或禁用 SouthPlus 论坛自动完成任务脚本
+
+[Rule]
+DOMAIN, www.south-plus.net, PROXY
+DOMAIN-SUFFIX, south-plus.net, PROXY
+
+[Script]
+# 此规则用于在访问任务页面时，自动运行脚本以完成 SouthPlus 论坛任务
+http-response ^https:\/\/www\.south-plus\.net\/plugin\.php\?H_name-tasks\.html requires-body=true, script-path=https://raw.githubusercontent.com/amiglistimo/Loon/refs/heads/main/Script/southPlus.js, timeout=60, tag=[SouthPlus]自动任务, enabled={Enable-SouthPlus-Tasks}
+
+[MitM]
+hostname = www.south-plus.net
