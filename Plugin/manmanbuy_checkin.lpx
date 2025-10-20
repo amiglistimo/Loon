@@ -1,6 +1,27 @@
-# 慢慢买每日自动签到
+#!name = 慢慢买每日自动签到
+#!desc = 慢慢买每日自动签到。打开慢慢买App，进入“我的” - “每日签到”，弹出通知获取Cookie成功即可。
+#!openUrl = https://www.manmanbuy.com/
+#!author = blackmatrix7[https://github.com/blackmatrix7/ios_rule_script/tree/master/script/archive/manmanbuy]
+#!tag = 定时任务
+#!system = 
+#!system_version = 
+#!loon_version = 3.3.5(904)
+#!homepage = https://github.com/blackmatrix7/ios_rule_script
+#!icon = https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/script/archive/manmanbuy/manmanmai.png
+#!date = 2025-10-20 00:00
 
-http-request ^https?:\/\/apph5\.manmanbuy\.com\/taolijin\/(login.aspx|logserver.aspx) requires-body=1,script-path=https://raw.githubusercontent.com/amiglistimo/Loon/refs/heads/main/Script/manmanbuy_checkin.js,tag=慢慢买_获取cookie
-cron "15 0 * * *" script-path=https://raw.githubusercontent.com/amiglistimo/Loon/refs/heads/main/Script/manmanbuy_checkin.js,tag=慢慢买_每日签到
+[Argument]
+Cookie-manmanbuy_checkin = switch, true, false, tag = [manmanbuy_checkin]每日签到Token, desc = 获取[manmanbuy_checkin]每日签到Token
+Task-manmanbuy_checkin = switch, true, false, tag = [manmanbuy_checkin]每日签到Task, desc = 定时运行[manmanbuy_checkin]每日签到Task
+Cron-manmanbuy_checkin = input, "15 0 * * *", tag = [manmanbuy_checkin]定时参数Cron, desc = 输入Cron表达式来定时运行[manmanbuy_checkin]每日签到Task
 
+[Rule]
+DOMAIN, www.manmanbuy.com, PROXY
+DOMAIN-SUFFIX, manmanbuy.com, PROXY
+
+[Script]
+http-request ^https?:\/\/apph5\.manmanbuy\.com\/taolijin\/(login.aspx|logserver.aspx) requires-body=1,script-path=https://raw.githubusercontent.com/amiglistimo/Loon/refs/heads/main/Script/manmanbuy_checkin.js, requires-body = true, timeout = 60, tag = [manmanbuy_checkin]每日签到Token, enabled={Cookie-manmanbuy_checkin}
+cron {Cron-manmanbuy_checkin} script-path=https://raw.githubusercontent.com/amiglistimo/Loon/refs/heads/main/Script/manmanbuy_checkin.js, timeout = 60, tag = [manmanbuy_checkin]每日签到Task, enabled={Task-manmanbuy_checkin}
+
+[MitM]
 hostname = apph5.manmanbuy.com
