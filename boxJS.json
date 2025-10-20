@@ -1,7 +1,7 @@
 {
-    "id": "_personal.subscription.merged",
-    "name": "bosJS订阅",
-    "author": "@Sliverkiss & @blackmatrix7",
+    "id": "my.boxJS.sub",
+    "name": "自用boxJS订阅",
+    "author": "@Sliverkiss & @blackmatrix7 & @yuheng",
     "icon": "https://raw.githubusercontent.com/Sliverkiss/QuantumultX/main/icon/sakura.png",
     "repo": "",
     "apps": [
@@ -88,74 +88,89 @@
             "settings": [{"id": "southPlus_data", "name": "会员Cookie数据", "val": "", "type": "textarea", "autoGrow": true, "desc": "访问南+论坛任务页面时自动获取。"}]
         },
         {
-          "id": "blackmatrix7.zheye",
-          "name": "哲也同学",
-          "keys": [
-            "zhihu_blocked_users",
-            "zhihu_current_userinfo",
-            "zhihu_keyword_block",
-            "zhihu_black_answers",
-            "zheye_server_url"
-          ],
-          "author": "@blackmatrix7",
-          "repo": "https://github.com/blackmatrix7/ios_rule_script/tree/master/script/zheye",
-          "icons": [
-            "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/zheye/zheye.png",
-            "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/zheye/zheye.png"
-          ],
-          "descs_html": [
-            "<h4 align=\"left\">配置说明查看<a href=\"https://github.com/blackmatrix7/ios_rule_script/tree/master/script/zheye#readme\">README.md</a></h4>"
-          ],
-          "scripts": [],
-          "settings": [
-            {"id": "zhihu_settings_fake_vip", "name": "显示为盐选会员", "val": false, "type": "boolean", "desc": "非会员用户显示为盐选会员"},
-            {"id": "zhihu_settings_app_conf", "name": "软件配置优化", "val": false, "type": "boolean", "desc": "对下发的软件配置进行一些调整"},
-            {"id": "zhihu_settings_remove_live_tab", "name": "移除推荐页强制标签", "val": false, "type": "boolean", "desc": "强制移除推荐页的强制标签，需配置移除的标签，并开启“软件配置优化”"},
-            {"id": "zhihu_settings_blocked_keywords", "name": "推荐页关键词过滤", "val": true, "type": "boolean", "desc": "除普通关键词外还支持正则表达式过滤，需要开启“显示为盐选会员”"},
-            {"id": "zhihu_settings_recommend_stream", "name": "屏蔽推荐页流媒体", "val": false, "type": "boolean", "desc": "屏蔽推荐页中的视频、直播等流媒体信息"},
-            {"id": "zhihu_settings_recommend_pin", "name": "屏蔽推荐页想法", "val": false, "type": "boolean", "desc": "屏蔽推荐页中的想法"},
-            {"id": "zhihu_settings_blocked_users", "name": "黑名单屏蔽效果增强", "val": true, "type": "boolean", "desc": "增强知乎APP黑名单用户屏蔽效果"},
-            {"id": "zhihu_settings_moments_stream", "name": "屏蔽关注页流媒体", "val": false, "type": "boolean", "desc": "屏蔽关注页中的视频等流媒体"},
-            {"id": "zhihu_settings_moments_recommend", "name": "屏蔽关注页推荐关注人", "val": false, "type": "boolean", "desc": "屏蔽关注页中的“为您推荐”"},
-            {"id": "zhihu_settings_moments_activity", "name": "屏蔽关注页活动更新", "val": false, "type": "boolean", "desc": "屏蔽关注页中的“关注的内容”"},
-            {"id": "zhihu_settings_hot_list", "name": "热榜去广告", "val": true, "type": "boolean", "desc": "去除知乎热榜页面的广告"},
-            {"id": "zhihu_settings_preset_words", "name": "屏蔽预置关键词广告", "val": false, "type": "boolean", "desc": "屏蔽搜索页中的预置关键词广告"},
-            {"id": "zhihu_settings_remove_article", "name": "屏蔽推荐页中的文章", "val": false, "type": "boolean", "desc": "屏蔽推荐页中的文章，默认不启用"},
-            {"id": "zhihu_settings_sys_msg", "name": "屏蔽官方账号推广消息", "val": false, "type": "boolean", "desc": "屏蔽消息页内的官方账号推广消息"},
-            {"id": "zhihu_settings_answer_tip", "name": "付费内容/营销推广/购物推广提醒", "val": true, "type": "boolean", "desc": "在知乎回答中提示付费或营销内容"},
-            {"id": "zhihu_settings_check_paid_content", "name": "推荐页中提示付费/营销/购物推广", "val": false, "type": "boolean", "desc": "需要额外消耗流量，可能会影响推荐页加载速度"},
-            {"id": "zhihu_settings_request_content", "name": "推荐页主动探测内容的方式", "val": "local", "type": "radios", "items": [{"key": "local", "label": "本地"}, {"key": "cloud", "label": "云端"}], "desc": "开启推荐页中推广内容提示时，需要配置主动探测方式。默认为本地，使用云端需要在下方配置中填写服务端地址。"},
-            {"id": "zhihu_credit_score", "name": "自定义用户盐值", "val": "0", "type": "input", "desc": "修改用户盐值显示，无实际意义，不建议使用。仅当修改的盐值大于真实盐值时生效，关闭此功能请将盐值设置为0。"},
-            {"id": "zhihu_black_answers", "name": "知乎黑名单用户回答Id", "val": "", "type": "input", "desc": "记录知乎黑名单用户的回答Id的临时变量，通常不会有太多数据。如果数据量过大请清空此内容。"},
-            {"id": "zhihu_keyword_block", "name": "知乎屏蔽关键词", "val": "", "type": "textarea", "desc": "必须是JSON格式，Key为用户Id，不要修改。格式不正确可能导致执行异常。"},
-            {"id": "zheye_server_url", "name": "哲也同学服务端", "val": "", "type": "input", "desc": "用于解锁更多功能。示例 http://192.168.1.200:52273 。"},
-            {"id": "zheye_remove_feed_tabs", "name": "强制移除指定推荐页标签", "val": "", "type": "input", "desc": "每个标签以;分隔，如“直播;科学”"}
-          ]
+            "id": "blackmatrix7.zheye",
+            "name": "哲也同学",
+            "keys": ["zhihu_blocked_users", "zhihu_current_userinfo", "zhihu_keyword_block", "zhihu_black_answers", "zheye_server_url"],
+            "author": "@blackmatrix7",
+            "repo": "https://github.com/blackmatrix7/ios_rule_script/tree/master/script/zheye",
+            "icons": ["https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/zheye/zheye.png", "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/zheye/zheye.png"],
+            "descs_html": ["<h4 align=\"left\">配置说明查看<a href=\"https://github.com/blackmatrix7/ios_rule_script/tree/master/script/zheye#readme\">README.md</a></h4>"],
+            "scripts": [],
+            "settings": [{"id": "zhihu_settings_fake_vip", "name": "显示为盐选会员", "val": false, "type": "boolean", "desc": "非会员用户显示为盐选会员"}, {"id": "zhihu_settings_app_conf", "name": "软件配置优化", "val": false, "type": "boolean", "desc": "对下发的软件配置进行一些调整"}, {"id": "zhihu_settings_remove_live_tab", "name": "移除推荐页强制标签", "val": false, "type": "boolean", "desc": "强制移除推荐页的强制标签，需配置移除的标签，并开启“软件配置优化”"}, {"id": "zhihu_settings_blocked_keywords", "name": "推荐页关键词过滤", "val": true, "type": "boolean", "desc": "除普通关键词外还支持正则表达式过滤，需要开启“显示为盐选会员”"}, {"id": "zhihu_settings_recommend_stream", "name": "屏蔽推荐页流媒体", "val": false, "type": "boolean", "desc": "屏蔽推荐页中的视频、直播等流媒体信息"}, {"id": "zhihu_settings_recommend_pin", "name": "屏蔽推荐页想法", "val": false, "type": "boolean", "desc": "屏蔽推荐页中的想法"}, {"id": "zhihu_settings_blocked_users", "name": "黑名单屏蔽效果增强", "val": true, "type": "boolean", "desc": "增强知乎APP黑名单用户屏蔽效果"}, {"id": "zhihu_settings_moments_stream", "name": "屏蔽关注页流媒体", "val": false, "type": "boolean", "desc": "屏蔽关注页中的视频等流媒体"}, {"id": "zhihu_settings_moments_recommend", "name": "屏蔽关注页推荐关注人", "val": false, "type": "boolean", "desc": "屏蔽关注页中的“为您推荐”"}, {"id": "zhihu_settings_moments_activity", "name": "屏蔽关注页活动更新", "val": false, "type": "boolean", "desc": "屏蔽关注页中的“关注的内容”"}, {"id": "zhihu_settings_hot_list", "name": "热榜去广告", "val": true, "type": "boolean", "desc": "去除知乎热榜页面的广告"}, {"id": "zhihu_settings_preset_words", "name": "屏蔽预置关键词广告", "val": false, "type": "boolean", "desc": "屏蔽搜索页中的预置关键词广告"}, {"id": "zhihu_settings_remove_article", "name": "屏蔽推荐页中的文章", "val": false, "type": "boolean", "desc": "屏蔽推荐页中的文章，默认不启用"}, {"id": "zhihu_settings_sys_msg", "name": "屏蔽官方账号推广消息", "val": false, "type": "boolean", "desc": "屏蔽消息页内的官方账号推广消息"}, {"id": "zhihu_settings_answer_tip", "name": "付费内容/营销推广/购物推广提醒", "val": true, "type": "boolean", "desc": "在知乎回答中提示付费或营销内容"}, {"id": "zhihu_settings_check_paid_content", "name": "推荐页中提示付费/营销/购物推广", "val": false, "type": "boolean", "desc": "需要额外消耗流量，可能会影响推荐页加载速度"}, {"id": "zhihu_settings_request_content", "name": "推荐页主动探测内容的方式", "val": "local", "type": "radios", "items": [{"key": "local", "label": "本地"}, {"key": "cloud", "label": "云端"}], "desc": "开启推荐页中推广内容提示时，需要配置主动探测方式。默认为本地，使用云端需要在下方配置中填写服务端地址。"}, {"id": "zhihu_credit_score", "name": "自定义用户盐值", "val": "0", "type": "input", "desc": "修改用户盐值显示，无实际意义，不建议使用。仅当修改的盐值大于真实盐值时生效，关闭此功能请将盐值设置为0。"}, {"id": "zhihu_black_answers", "name": "知乎黑名单用户回答Id", "val": "", "type": "input", "desc": "记录知乎黑名单用户的回答Id的临时变量，通常不会有太多数据。如果数据量过大请清空此内容。"}, {"id": "zhihu_keyword_block", "name": "知乎屏蔽关键词", "val": "", "type": "textarea", "desc": "必须是JSON格式，Key为用户Id，不要修改。格式不正确可能导致执行异常。"}, {"id": "zheye_server_url", "name": "哲也同学服务端", "val": "", "type": "input", "desc": "用于解锁更多功能。示例 http://192.168.1.200:52273 。"}, {"id": "zheye_remove_feed_tabs", "name": "强制移除指定推荐页标签", "val": "", "type": "input", "desc": "每个标签以;分隔，如“直播;科学”"}]
         },
         {
             "id": "blackmatrix7.manmanbuy",
             "name": "慢慢买",
-            "keys": [ "manmanbuy_checkin_cookie", "manmanbuy_login_body", "manmanbuy_username", "manmanbuy_deviceid" ],
+            "keys": ["manmanbuy_checkin_cookie", "manmanbuy_login_body", "manmanbuy_username", "manmanbuy_deviceid"],
             "author": "@blackmatrix7",
             "repo": "https://github.com/blackmatrix7/ios_rule_script/tree/master/script/manmanbuy",
-            "icons": [ "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/manmanbuy/manmanmai.png", "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/script/archive/manmanbuy/manmanmai.png" ],
+            "icons": ["https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/manmanbuy/manmanmai.png", "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/script/archive/manmanbuy/manmanmai.png"],
             "script": "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/manmanbuy/manmanbuy_checkin.js"
         },
         {
             "id": "blackmatrix7.smzdm",
             "name": "什么值得买",
-            "keys": [ "smzdm_cookie", "smzdm_cookie_id", "smzdm_signin", "smzdm_mission", "smzdm_lottery", "smzdm_blackroom", "smzdm_sync_qinglong" ],
+            "keys": ["smzdm_cookie", "smzdm_cookie_id", "smzdm_signin", "smzdm_mission", "smzdm_lottery", "smzdm_blackroom", "smzdm_sync_qinglong"],
             "author": "@blackmatrix7",
             "repo": "https://github.com/blackmatrix7/ios_rule_script/tree/master/script/smzdm",
-            "icons": [ "https://raw.githubusercontent.com/Orz-3/mini/master/Alpha/smzdm.png", "https://raw.githubusercontent.com/Orz-3/mini/master/Color/smzdm.png" ],
+            "icons": ["https://raw.githubusercontent.com/Orz-3/mini/master/Alpha/smzdm.png", "https://raw.githubusercontent.com/Orz-3/mini/master/Color/smzdm.png"],
             "scripts": [{"name": "执行每日签到与任务", "script": "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/smzdm/smzdm_daily.js"}],
-            "settings": [
-                {"id": "smzdm_sync_qinglong", "name": "同步数据到青龙面板", "val": false, "type": "boolean", "desc": "将必要数据同步至青龙面板，以执行作业"},
-                {"id": "smzdm_signin", "name": "执行每日签到", "val": false, "type": "boolean", "desc": ""},
-                {"id": "smzdm_mission", "name": "执行每日任务", "val": false, "type": "boolean", "desc": ""},
-                {"id": "smzdm_lottery", "name": "执行每日抽奖", "val": false, "type": "boolean", "desc": ""},
-                {"id": "smzdm_blackroom", "name": "脚本运行时进行黑号检测", "val": false, "type": "boolean", "desc": ""}
-            ]
+            "settings": [{"id": "smzdm_sync_qinglong", "name": "同步数据到青龙面板", "val": false, "type": "boolean", "desc": "将必要数据同步至青龙面板，以执行作业"}, {"id": "smzdm_signin", "name": "执行每日签到", "val": false, "type": "boolean", "desc": ""}, {"id": "smzdm_mission", "name": "执行每日任务", "val": false, "type": "boolean", "desc": ""}, {"id": "smzdm_lottery", "name": "执行每日抽奖", "val": false, "type": "boolean", "desc": ""}, {"id": "smzdm_blackroom", "name": "脚本运行时进行黑号检测", "val": false, "type": "boolean", "desc": ""}]
+        },
+        {
+            "id": "yuheng.hlbdy",
+            "name": "最新黑料",
+            "descs_html": ["<a target='_blank' href='https://raw.githubusercontent.com/Yuheng0101/X/main/Tasks/hlbdy.js'>跳转脚本</a>"],
+            "keys": ["hlbdy_notify_with_media", "hlbdy_debug", "hlbdy_type", "hlbdy_notify_type"],
+            "settings": [{"id": "hlbdy_notify_type", "name": "通知类型", "val": "0", "type": "radios", "desc": "默认组合通知(没有媒体通知), Surge用户建议使用单独通知", "items": [{"key": "0", "label": "组合通知"}, {"key": "1", "label": "单独通知"}]}, {"id": "hlbdy_notify_with_media", "name": "是否开启媒体通知", "val": true, "type": "boolean", "desc": "iOS16.5.x~iOS16.7.x用户请关闭该选项, 默认开启"}, {"id": "hlbdy_debug", "name": "是否开启调试模式", "val": false, "type": "boolean", "desc": "默认关闭"}, {"id": "hlbdy_type", "name": "获取内容类型", "val": "最新黑料", "type": "radios", "desc": "默认最新黑料", "items": [{"key": "最新黑料", "label": "最新黑料"}, {"key": "今日黑料", "label": "今日黑料"}, {"key": "今日热搜", "label": "今日热搜"}, {"key": "热门大瓜", "label": "热门大瓜"}, {"key": "网红乱象", "label": "网红乱象"}, {"key": "原创社区", "label": "原创社区"}, {"key": "独家爆料", "label": "独家爆料"}]}],
+            "author": "@yuheng",
+            "repo": "https://github.com/Yuheng0101/X",
+            "icons": ["https://raw.githubusercontent.com/Toperlock/Quantumult/main/icon/heiliao.png", "https://raw.githubusercontent.com/Toperlock/Quantumult/main/icon/heiliao.png"],
+            "script": "https://raw.githubusercontent.com/Yuheng0101/X/main/Tasks/hlbdy.js"
+        },
+        {
+            "id": "yuheng.javday",
+            "name": "𝐉𝐀𝐕𝐃𝐚𝐲每日推荐",
+            "descs_html": ["<p style='color:#3498db;text-align:center;'>说明请查看脚本注释👇</p>", "<a style='color:#686de0;display:block;text-align:center;' target='_blank' href='https://raw.githubusercontent.com/Yuheng0101/X/main/Tasks/javday.js'>脚本链接</a>"],
+            "keys": ["javday_wrold_debug", "javday_type", "javday_item_type"],
+            "settings": [{"id": "javday_wrold_debug", "name": "是否开启调试模式", "val": false, "type": "boolean", "desc": ""}, {"id": "javday_type", "name": "推荐类型", "val": "人氣系列", "type": "radios", "desc": "选择需要通知的类型, 默认'人氣系列'", "items": [{"key": "最新更新", "label": "最新更新"}, {"key": "人氣系列", "label": "人氣系列"}, {"key": "新作上市", "label": "新作上市"}, {"key": "國產AV", "label": "國產AV"}, {"key": "糖心VLOG", "label": "糖心VLOG"}, {"key": "蘿莉社", "label": "蘿莉社"}]}, {"id": "javday_item_type", "name": "选择类型", "val": "随机", "type": "radios", "desc": "选择推送类型, 默认'随机'", "items": [{"key": "最新", "label": "最新"}, {"key": "随机", "label": "随机"}]}],
+            "author": "@yuheng",
+            "repo": "https://github.com/Yuheng0101/X",
+            "icons": ["https://raw.githubusercontent.com/Yuheng0101/X/main/Assets/javday.png", "https://raw.githubusercontent.com/Yuheng0101/X/main/Assets/javday.png"],
+            "script": "https://raw.githubusercontent.com/Yuheng0101/X/main/Tasks/javday.js"
+        },
+        {
+            "id": "yuheng.meitu",
+            "name": "美图鉴赏",
+            "descs_html": ["<p style='color:#3498db;text-align:center;'>希望使用脚本让你快乐每一天😊</p>"],
+            "keys": ["meitu_type"],
+            "settings": [{"id": "meitu_type", "name": "推荐类型", "val": "1024", "type": "radios", "desc": "选择图源, 默认'1024'", "items": [{"key": "4KHD - popular", "label": "4KHD - popular"}, {"key": "4KHD - cosplay", "label": "4KHD - cosplay"}, {"key": "4KHD - album", "label": "4KHD - album"}, {"key": "115ZY - 街拍偷拍", "label": "115ZY - 街拍偷拍"}, {"key": "115ZY - 丝袜美腿", "label": "115ZY - 丝袜美腿"}, {"key": "115ZY - 欧美风情", "label": "115ZY - 欧美风情"}, {"key": "115ZY - 卡通漫画", "label": "115ZY - 卡通漫画"}, {"key": "115ZY - 网友自拍", "label": "115ZY - 网友自拍"}, {"key": "115ZY - 露出激情", "label": "115ZY - 露出激情"}, {"key": "115ZY - 唯美写真", "label": "115ZY - 唯美写真"}, {"key": "115ZY - 女优情报", "label": "115ZY - 女优情报"}, {"key": "1024 - 唯美写真", "label": "1024 - 唯美写真"}, {"key": "1024 - 网友自拍", "label": "1024 - 网友自拍"}, {"key": "1024 - 露出激情", "label": "1024 - 露出激情"}, {"key": "1024 - 美乳美臀", "label": "1024 - 美乳美臀"}, {"key": "1024 - 丝袜美腿", "label": "1024 - 丝袜美腿"}, {"key": "1024 - 卡通漫画", "label": "1024 - 卡通漫画"}, {"key": "1024 - AI图展", "label": "1024 - AI图展"}]}],
+            "author": "@yuheng",
+            "repo": "https://github.com/Yuheng0101/X",
+            "icons": ["https://raw.githubusercontent.com/Yuheng0101/X/main/Assets/meitu.png", "https://raw.githubusercontent.com/Yuheng0101/X/main/Assets/meitu.png"],
+            "script": "https://raw.githubusercontent.com/Yuheng0101/X/main/Tasks/meitu/meitu.js"
+        },
+        {
+            "id": "yuheng.javbus",
+            "name": "巴士论坛签到",
+            "descs_html": ["<p style='color:#16a085;text-align:center;margin-top:20px;'>先添加重写脚本</p>", "<a style='color:#3498db;text-align:center;display:block;margin:20px 0;' href='https://www.javbus.com/forum/' target='_blank'>打开👉 https://www.javbus.com/forum/ 登陆</a>", "<p style='color:#e67e22;text-align:center;'>点击右上角头像</p>", "<p style='color:#e74c3c;text-align:center;'>提示获取Cookie成功即可食用该脚本</p>"],
+            "keys": ["javbus_bark_push", "javbus_debug", "javbus_users", "javbus_notification_image"],
+            "settings": [{"id": "javbus_bark_push", "name": "Bark密钥", "val": null, "type": "text", "desc": "仅使用Bark进行通知"}, {"id": "javbus_debug", "name": "是否开启调试模式", "val": false, "type": "boolean", "desc": ""}, {"id": "javbus_users", "name": "账号", "val": null, "type": "textarea", "rows": 5, "desc": ""}, {"id": "javbus_notification_image", "name": "是否开启媒体通知🔞", "val": false, "type": "boolean", "desc": ""}],
+            "author": "@yuheng",
+            "repo": "https://github.com/Yuheng0101/X",
+            "icons": ["https://raw.githubusercontent.com/Yuheng0101/X/main/Assets/bus.png", "https://raw.githubusercontent.com/Yuheng0101/X/main/Assets/bus.png"],
+            "script": "https://raw.githubusercontent.com/Yuheng0101/X/main/Tasks/javbus.js"
+        },
+        {
+            "id": "yuheng.wuai",
+            "name": "吾爱破解",
+            "descs_html": ["<a style='color:#686de0;display:block;text-align:center;' target='_blank' href='https://raw.githubusercontent.com/Yuheng0101/X/main/Tasks/52pojie.js'>脚本链接</a>"],
+            "keys": ["wuai_debug", "wuai_cookie", "wuai_bark_key"],
+            "settings": [{"id": "wuai_debug", "name": "是否开启调试模式", "val": false, "type": "boolean", "desc": ""}, {"id": "wuai_cookie", "name": "Cookie", "val": null, "type": "textarea", "rows": 5, "desc": ""}, {"id": "wuai_bark_key", "name": "Bark密钥", "val": null, "type": "text", "desc": "填写后只使用Bark推送"}],
+            "author": "@yuheng",
+            "repo": "https://github.com/Yuheng0101/X",
+            "icons": ["https://raw.githubusercontent.com/Yuheng0101/X/main/Assets/52pojie.png", "https://raw.githubusercontent.com/Yuheng0101/X/main/Assets/52pojie.png"],
+            "script": "https://raw.githubusercontent.com/Yuheng0101/X/main/Tasks/52pojie.js"
         }
     ]
 }
