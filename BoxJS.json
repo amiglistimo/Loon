@@ -104,7 +104,7 @@
             "keys": ["manmanbuy_checkin_cookie", "manmanbuy_login_body", "manmanbuy_username", "manmanbuy_deviceid"],
             "author": "@blackmatrix7",
             "repo": "https://github.com/blackmatrix7/ios_rule_script/tree/master/script/manmanbuy",
-            "icons": ["https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/manmanbuy/manmanmai.png", "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/manmanbuy/manmanmai.png"],
+            "icons": ["https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/manmanbuy/manmanmai.png", "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/script/archive/manmanbuy/manmanmai.png"],
             "script": "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/manmanbuy/manmanbuy_checkin.js"
         },
         {
@@ -130,7 +130,7 @@
         },
         {
             "id": "yuheng.javday",
-            "name": "𝐉𝐀𝐕𝐃𝐚𝐲每日推荐",
+            "name": "JAVDay每日推荐",
             "descs_html": ["<p style='color:#3498db;text-align:center;'>说明请查看脚本注释👇</p>", "<a style='color:#686de0;display:block;text-align:center;' target='_blank' href='https://raw.githubusercontent.com/Yuheng0101/X/main/Tasks/javday.js'>脚本链接</a>"],
             "keys": ["javday_wrold_debug", "javday_type", "javday_item_type"],
             "settings": [{"id": "javday_wrold_debug", "name": "是否开启调试模式", "val": false, "type": "boolean", "desc": ""}, {"id": "javday_type", "name": "推荐类型", "val": "人氣系列", "type": "radios", "desc": "选择需要通知的类型, 默认'人氣系列'", "items": [{"key": "最新更新", "label": "最新更新"}, {"key": "人氣系列", "label": "人氣系列"}, {"key": "新作上市", "label": "新作上市"}, {"key": "國產AV", "label": "國產AV"}, {"key": "糖心VLOG", "label": "糖心VLOG"}, {"key": "蘿莉社", "label": "蘿莉社"}]}, {"id": "javday_item_type", "name": "选择类型", "val": "随机", "type": "radios", "desc": "选择推送类型, 默认'随机'", "items": [{"key": "最新", "label": "最新"}, {"key": "随机", "label": "随机"}]}],
