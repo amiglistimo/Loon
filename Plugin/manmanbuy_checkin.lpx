@@ -16,8 +16,8 @@ Task-manmanbuy = switch, true, false, tag = [manmanbuy]每日签到Task, desc = 
 Cron-manmanbuy = input, "15 0 * * *", tag = [manmanbuy]定时参数Cron, desc = 输入Cron表达式来定时运行[manmanbuy]每日签到Task
 
 [Rule]
-DOMAIN, www.manmanbuy.com, PROXY
-DOMAIN-SUFFIX, manmanbuy.com, PROXY
+DOMAIN, www.manmanbuy.com, DIRECT
+DOMAIN-SUFFIX, manmanbuy.com, DIRECT
 
 [Script]
 http-request ^https?:\/\/apph5\.manmanbuy\.com\/taolijin\/(login.aspx|logserver.aspx) requires-body=1,script-path=https://raw.githubusercontent.com/amiglistimo/Loon/refs/heads/main/Script/manmanbuy_checkin.js, requires-body = true, timeout = 60, tag = [manmanbuy]每日签到Token, enabled={Cookie-manmanbuy}
