@@ -11,16 +11,23 @@
 #!date = 2025-10-20 00:00
 
 [Argument]
-# SouthPlus 自动任务脚本的开关，用于在UI界面快捷启用或禁用
-Enable-SouthPlus-Tasks = switch, true, false, tag = [SouthPlus]自动任务, desc = 启用或禁用 SouthPlus 论坛自动完成任务脚本
+# 开关 1: 用于获取“慢慢买”签到Token。获取成功后即可关闭此开关。
+Enable-Manmanbuy-Cookie = switch, true, false, tag = [manmanbuy]获取Token, desc = 开启后，请重新登录“慢慢买”App来获取签到Token
 
-[Rule]
-DOMAIN, www.south-plus.net, PROXY
-DOMAIN-SUFFIX, south-plus.net, PROXY
+# 开关 2: 用于启用或禁用“慢慢买”的每日自动签到任务。
+Enable-Manmanbuy-Task = switch, true, false, tag = [manmanbuy]每日签到, desc = 启用或禁用“慢慢买”每日自动签到任务
+
+# 输入框: 自定义签到任务的执行时间（Cron表达式）
+Cron-Manmanbuy = input, "15 0 * * *", tag = [manmanbuy]签到时间, desc = 设置定时签到的Cron表达式，默认为每天00:15
 
 [Script]
-# 此规则用于在访问任务页面时，自动运行脚本以完成 SouthPlus 论坛任务
-http-response ^https:\/\/www\.south-plus\.net\/plugin\.php\?H_name-tasks\.html requires-body=true, script-path=https://raw.githubusercontent.com/amiglistimo/Loon/refs/heads/main/Script/southPlus.js, timeout=60, tag=[SouthPlus]自动任务, enabled={Enable-SouthPlus-Tasks}
+# 脚本 1: 拦截登录请求，获取签到Token。
+# 此规则的生效状态由上方的“[manmanbuy]获取Token”开关控制。
+http-request ^https?:\/\/apph5\.manmanbuy\.com\/taolijin\/(login.aspx|logserver.aspx) requires-body=true, script-path=https://raw.githubusercontent.com/amiglistimo/Loon/refs/heads/main/Script/manmanbuy_checkin.js, timeout=60, tag=[manmanbuy]获取Token, enabled={Enable-Manmanbuy-Cookie}
+
+# 脚本 2: 根据设定的时间，自动执行每日签到任务。
+# 此规则的生效状态由上方的“[manmanbuy]每日签到”开关控制。
+cron {Cron-Manmanbuy} script-path=https://raw.githubusercontent.com/amiglistimo/Loon/refs/heads/main/Script/manmanbuy_checkin.js, timeout=60, tag=[manmanbuy]每日签到, enabled={Enable-Manmanbuy-Task}
 
 [MitM]
-hostname = www.south-plus.net
+hostname = apph5.manmanbuy.com
