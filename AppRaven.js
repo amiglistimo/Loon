@@ -22,7 +22,7 @@ body = body.replace(/"youOwn":false/g,
 body = body.replace(/"arcade":false/g,
 '"arcade":true');
 
-body = body.replace(/"preorder":false/g,
-'"preorder":true');
+// body = body.replace(/"preorder":false/g,
+// '"preorder":true');
 
 $done({ body });
