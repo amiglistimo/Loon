@@ -1,0 +1,17 @@
+#!name = PastePal
+#!desc = PastePal解锁会员功能
+#!openUrl = https://apps.apple.com/us/app/id1503446680
+#!author = RayYiHang[https://github.com/RayYiHang/jsbox]
+#!homepage = https://github.com/RayYiHang/jsbox
+#!icon = https://indiegoodies.com/icons/pastepal.png
+#!tag = 解锁会员功能
+#!system = iOS
+#!system_version = 26
+#!date = 2025-11-11 09:41:00
+#!version = 3.3.5(904)
+
+[Script]
+http-response https:\/\/api\.revenuecat\.com script-path=https://raw.githubusercontent.com/amiglistimo/Loon/refs/heads/main/Script/pastepal.js, requires-body=true, timeout=20, tag=PastePal解锁
+
+[MITM]
+hostname = revenuecat.com
