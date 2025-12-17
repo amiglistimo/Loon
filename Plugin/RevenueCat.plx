@@ -11,7 +11,7 @@
 #!date = 2025-12-17 10:00
 
 [Rewrite]
-#!desc=移除 RevenueCat 请求的 ETag 头部，解决缓存导致的订阅问题。
+# 移除 RevenueCat 请求的 ETag 头部，解决缓存导致的订阅问题
 ^https?://api\.revenuecat\.com/.+/(receipts$|subscribers/?(.*?)*$) header-del X-RevenueCat-ETag x-revenuecat-etag
 
 [Script]
