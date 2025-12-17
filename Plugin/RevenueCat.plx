@@ -7,7 +7,7 @@
 #!system_version = 
 #!loon_version = 3.3.7(921)
 #!homepage = https://apptesters.org/scripting
-#!icon = https://raw.githubusercontent.com/luestr/IconResource/main/Website_icon/120px/RevenueCat.png
+#!icon = https://raw.githubusercontent.com/amiglistimo/Loon/refs/heads/main/pics/RevenueCat.png
 #!date = 2025-12-17 10:00
 
 [Argument]
