@@ -1,5 +1,5 @@
-#!name = RevenueCat
-#!desc = RevenueCat系列解锁合集
+#!name = RevenueCat & BuyiTunes 系列
+#!desc = RevenueCat & BuyiTunes 解锁合集
 #!openUrl = 
 #!author = AppTesters
 #!tag = 解锁会员
