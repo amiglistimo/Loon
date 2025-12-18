@@ -23,5 +23,6 @@ BuyiTunesScriptEnable = switch, true, false, tag = BuyiTunes, desc = 是否启�
 http-response ^https:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers\/[^/]+$) script-path=https://apptesters.org/egern/AutoRC.js, requires-body=true, timeout=60, tag=RevenueCat, img-url=https://raw.githubusercontent.com/luestr/IconResource/main/Website_icon/120px/RevenueCat.png
 # BuyiTunes 系列
 http-response ^https:\/\/buy\.itunes\.apple\.com\/verifyReceipt script-path=https://apptesters.org/egern/iTunes.js, requires-body=true, timeout=60, tag=BuyiTunes, img-url=https://raw.githubusercontent.com/sooyaaabo/Loon/main/Icon/App-Icon/iTunes.png
+
 [Mitm]
 hostname = api.revenuecat.com, buy.itunes.apple.com
