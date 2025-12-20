@@ -1,4 +1,4 @@
-#!name = JavDB & MissAV
+#!name = JavDB 网页增强
 #!desc = 去除 JavDB & MissAV 网页版广告，跳转 MissAV 播放
 #!openUrl = 
 #!author = ddgksf2013
