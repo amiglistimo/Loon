@@ -1,0 +1,28 @@
+#!name=百度网盘去广告
+#!desc=移除百度网盘开屏、信息流、游戏推广等广告。
+#!author=ddgksf2013
+#!homepage=https://ddgksf2013.top/scripts/bdpan.ads.js
+#!icon=https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/BaiduNetDisk.png
+#!date=2025-12-28
+
+[Rewrite]
+^https?:\/\/pan\.baidu\.com\/api\/getconfig reject-dict
+^https?:\/\/.*baidu\.com\/rest\/.*\/membership\/(proxy\/)?guide reject-200
+^https?:\/\/pan\.baidu\.com\/act\/v\d\/(bchannel|welfare)\/list reject-200
+^https?:\/\/pan\.baidu\.com\/rest\/.*\/pcs\/ad reject-200
+^https?:\/\/pan\.baidu\.com\/act\/api\/activityentry reject-200
+^https:\/\/pan\.baidu\.com\/feed\/hotlist reject-200
+^https?:\/\/.*zhangyuyidong\.cn\/api\/zysdk reject-200
+^https?:\/\/pan\.baidu\.com\/api\/getsyscfg reject-dict
+^https:\/\/pan\.baidu\.com\/queryintent\/queryhint reject-200
+^https:\/\/pan\.baidu\.com\/coins\/center\/notice reject-200
+^https:\/\/pan\.baidu\.com\/api\/taskscore\/tasklist response-body-json-jq '.result.list=[]'
+^https:\/\/pan\.baidu\.com\/recommend\/shortseries\/list reject-dict
+
+[Script]
+http-response ^https?:\/\/afd\.baidu\.com\/afd\/entry script-path=https://ddgksf2013.top/scripts/bdpan.ads.js, requires-body=true, timeout=60, tag=百度网盘_广告推广
+http-response ^https:\/\/pan\.baidu\.com\/rest\/.*\/membership\/user\?method=gamecenter script-path=https://ddgksf2013.top/scripts/bdpan.ads.js, requires-body=true, timeout=60, tag=百度网盘_游戏广告
+http-response ^https:\/\/pan\.baidu\.com\/feed\/cardinfos script-path=https://ddgksf2013.top/scripts/bdpan.ads.js, requires-body=true, timeout=60, tag=百度网盘_首页信息流
+
+[Mitm]
+hostname = pan.baidu.com,afd.baidu.com,*.zhangyuyidong.cn
