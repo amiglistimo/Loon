@@ -1,0 +1,13 @@
+#!name=百度网盘倍速画质
+#!desc=解锁百度网盘在线视频倍速播放、1080p高清画质，并点亮本地 SVIP 会员标识。
+#!author=ddgksf2013
+#!icon=https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/BaiduNetDisk.png
+#!homepage=https://ddgksf2013.top
+#!date=2026-01-09
+
+[Script]
+http-request ^https:\/\/pan\.baidu\.com\/api\/streaming\?app_id=\d+&type=M3U8_HQ_1080 script-path=https://ddgksf2013.top/scripts/bdpan.unlock.js, requires-body=true, timeout=60, tag=百度网盘_倍速播放
+http-response ^https:\/\/pan\.baidu\.com\/rest\/.*\/membership\/user script-path=https://ddgksf2013.top/scripts/bdpan.unlock.js, requires-body=true, timeout=60, tag=百度网盘_会员解锁
+
+[Mitm]
+hostname = pan.baidu.com,afd.baidu.com
