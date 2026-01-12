@@ -1,0 +1,12 @@
+#!name=DingTalk 去广告
+#!desc=移除开屏广告
+#!author=ddgksf2013
+#!icon=https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/dingtalk.png
+#!homepage=https://github.com/amiglistimo/Loon/
+#!date=2026-01-12
+
+[Script]
+http-response ^https?:\/\/http2lwp\.dingtalk\.com\/v3\/r\/Adaptor\/Setting\/getConfPreLogin script-path=https://raw.githubusercontent.com/amiglistimo/Loon/refs/heads/main/Script/dingtalk_kill.js, requires-body=true, timeout=60, tag=钉钉去广告
+
+[Mitm]
+hostname = http2lwp.dingtalk.com
