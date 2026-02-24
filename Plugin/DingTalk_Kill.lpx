@@ -7,7 +7,7 @@
 
 [Script]
 # 拦截并修改钉钉 FastConfig 配置
-http-response ^https?:\/\/file\.dingtalk\.com\/fastconfigonline\/.*\.json script-path=https://raw.githubusercontent.com/amiglistimo/Loon/refs/heads/main/Script/dingtalk_kill_v3.js, requires-body=true, timeout=60, tag=钉钉配置拦截
+http-response ^https?:\/\/file\.dingtalk\.com\/fastconfigonline\/.*\.json script-path=https://raw.githubusercontent.com/amiglistimo/Loon/refs/heads/main/Script/dingtalk_kill.js, requires-body=true, timeout=60, tag=钉钉配置拦截
 
 [Mitm]
 hostname = file.dingtalk.com
