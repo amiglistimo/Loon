@@ -3,11 +3,11 @@
 #!author=amiglistimo
 #!icon=https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/dingtalk.png
 #!homepage=https://github.com/amiglistimo/Loon/
-#!date=2026-02-24
+#!date=2026-02-26
 
 [Script]
-# 拦截并修改钉钉 FastConfig 配置
-http-response ^https?:\/\/file\.dingtalk\.com\/fastconfigonline\/.*\.json script-path=https://raw.githubusercontent.com/amiglistimo/Loon/refs/heads/main/Script/dingtalk_kill.js, requires-body=true, timeout=60, tag=钉钉配置拦截
+# 使用 .* 匹配 getConf 及其衍生接口，确保不漏网
+http-response ^https?:\/\/http2lwp\.dingtalk\.com\/v3\/r\/Adaptor\/Setting\/getConf.* script-path=https://raw.githubusercontent.com/amiglistimo/Loon/refs/heads/main/Script/dingtalk_kill.js, requires-body=true, timeout=60, tag=钉钉去广告
 
 [Mitm]
-hostname = file.dingtalk.com
+hostname = http2lwp.dingtalk.com
