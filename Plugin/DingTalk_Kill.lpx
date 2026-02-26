@@ -1,8 +1,7 @@
 #!name=DingTalk 去广告
-#!desc=移除开屏广告
+#!desc=移除开屏广告，覆盖登录前后配置接口
 #!author=amiglistimo
 #!icon=https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/dingtalk.png
-#!homepage=https://github.com/amiglistimo/Loon/
 #!date=2026-02-26
 
 [Script]
