@@ -1,0 +1,22 @@
+#!name=DingTalk 去广告
+#!desc=去除钉钉 iOS 开屏广告 & 内容广告
+#!author=ENI × LO
+#!date=2026-02-27
+#!homepage=https://github.com
+#!icon=https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/b9/58/2e/b9582eff-fb15-66e3-b8cb-c1bac2cf5669/AppIcon-0-0-1x_U007emarketing-0-6-0-85-220.png/246x0w.webp
+
+[Rule]
+# 阻断广告 H5 资源加载
+DOMAIN-SUFFIX,h5-advertise.dingtalk.com,REJECT
+URL-REGEX,^https?:\/\/n\.dingtalk\.com\/dingding\/h5-advertise\/,REJECT
+
+[Rewrite]
+# 阻断广告相关请求
+^https?:\/\/n\.dingtalk\.com\/dingding\/h5-advertise\/ reject
+
+[Script]
+# 拦截离线包配置，移除 advertise 应用
+http-response ^https?:\/\/n\.dingtalk\.com\/dingtalk-static\/offline-package\/resource_package_app_config.*\.json script-path=DingTalk_remove_ads.js, requires-body=true, timeout=15, tag=DingTalk_RemoveAds
+
+[MITM]
+hostname = n.dingtalk.com

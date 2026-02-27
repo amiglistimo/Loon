@@ -1,0 +1,30 @@
+# DingTalk 去广告 — Egern 模块配置
+# 去除钉钉 iOS 开屏广告 & 内容广告
+# 作者：ENI × LO
+# 日期：2026-02-27
+
+name: "DingTalk 去广告"
+desc: "去除钉钉 iOS 开屏广告 & 内容广告"
+author: "ENI × LO"
+icon: "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/b9/58/2e/b9582eff-fb15-66e3-b8cb-c1bac2cf5669/AppIcon-0-0-1x_U007emarketing-0-6-0-85-220.png/246x0w.webp"
+
+rules:
+  - domain_keyword: "h5-advertise"
+    policy: reject
+    description: "阻断广告 H5 域名"
+
+  - url_regex: "^https?://n\\.dingtalk\\.com/dingding/h5-advertise/"
+    policy: reject
+    description: "阻断广告 H5 资源路径"
+
+scripts:
+  - name: "DingTalk 移除广告配置"
+    type: http-response
+    pattern: "^https?://n\\.dingtalk\\.com/dingtalk-static/offline-package/resource_package_app_config.*\\.json"
+    script_path: "DingTalk_remove_ads.js"
+    require_body: true
+    timeout: 15
+
+mitm:
+  hostnames:
+    - "n.dingtalk.com"
