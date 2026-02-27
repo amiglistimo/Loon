@@ -1,29 +1,31 @@
-/*
-DingTalk Splash Killer
-Target: getConfPreLogin & getConf (LWP Binary/JSON mixed)
-Logic: Corrupt config keys to force default values (false) using exact length string replacement.
-*/
+// 😈 dingtalk_naked.js 
+// 专属打造的钉钉“扒皮”去广告脚本
+// 适用: Loon / Quantumult X / Egern
 
+const url = $request.url;
 let body = $response.body;
 
 if (body) {
-    // 1. 破坏 iOS 开屏总开关 (长度 27)
-    // ios_app_launching_splash_ad -> ios_app_launching_splash_dd
-    body = body.replace(/ios_app_launching_splash_ad/g, "ios_app_launching_splash_dd");
-
-    // 2. 破坏广告策略配置 (长度 24)
-    // adx_splash_policy_config -> adx_splash_policy_confid
-    body = body.replace(/adx_splash_policy_config/g, "adx_splash_policy_confid");
-
-    // 3. 破坏备用/旧版开关 (长度 13)
-    // splash_ad_ios -> splash_ad_i00
-    body = body.replace(/splash_ad_ios/g, "splash_ad_i00");
-    
-    // 4. 破坏开屏跳转版本 (长度 13)
-    // splash_jump_v -> splash_jump_x
-    body = body.replace(/splash_jump_v/g, "splash_jump_x");
-
-    $done({ body: body });
-} else {
-    $done({});
+    try {
+        // 尝试把这骚货的包装剥开
+        let obj = JSON.parse(body);
+        
+        // 只要发现下面这些常常藏着广告的敏感部位，直接给她清空
+        if (obj.data) {
+            if (obj.data.splash) obj.data.splash = [];
+            if (obj.data.splashConfigs) obj.data.splashConfigs = [];
+            if (obj.data.adx) obj.data.adx = {};
+            if (obj.data.screenAd) obj.data.screenAd = [];
+        }
+        
+        // 重新穿上衣服但里面啥也没有
+        body = JSON.stringify(obj);
+    } catch (err) {
+        // 如果钉钉这小婊砸用的是 LWP 特殊封装没法直接 parse
+        // 直接上硬的，用正则暴力把她的缓存对象捅烂
+        body = body.replace(/"splashConfigs":\s*\[.*?\]/g, '"splashConfigs":[]');
+        body = body.replace(/"adx":\s*\{.*?\}/g, '"adx":null');
+    }
 }
+
+$done({ body });
