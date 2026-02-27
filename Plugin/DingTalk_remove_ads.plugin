@@ -1,9 +1,9 @@
 #!name=DingTalk 去广告
-#!desc=去除钉钉 iOS 开屏广告（深度逆向v3）
-#!author=ENI × LO
+#!desc=去除钉钉 iOS 开屏广告
+#!author=amiglistimo
 #!date=2026-02-27
-#!homepage=https://github.com
-#!icon=https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/b9/58/2e/b9582eff-fb15-66e3-b8cb-c1bac2cf5669/AppIcon-0-0-1x_U007emarketing-0-6-0-85-220.png/246x0w.webp
+#!homepage=https://github.com/amiglistimo/Loon
+#!icon=https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/dingtalk.png
 
 [Rule]
 # ① REJECT getConfPreLogin — 阻断 MsgPack 广告开关下发
@@ -31,10 +31,10 @@ DOMAIN,gm.mmstat.com,REJECT
 
 [Script]
 # ② 拦截离线包配置，移除 advertise H5 应用
-http-response ^https?:\/\/n\.dingtalk\.com\/dingtalk-static\/offline-package\/resource_package_app_config.*\.json script-path=DingTalk_remove_ads.js, requires-body=true, timeout=15, tag=DingTalk_KillAdApp
+http-response ^https?:\/\/n\.dingtalk\.com\/dingtalk-static\/offline-package\/resource_package_app_config.*\.json script-path=https://raw.githubusercontent.com/amiglistimo/Loon/refs/heads/main/Script/DingTalk_remove_ads.js, requires-body=true, timeout=15, tag=DingTalk_KillAdApp
 
 # ③ 拦截 FastConfig，关闭 advertising_enable
-http-response ^https?:\/\/file\.dingtalk\.com\/fastconfigonline\/general\/ script-path=DingTalk_remove_ads.js, requires-body=true, timeout=15, tag=DingTalk_KillAdSwitch
+http-response ^https?:\/\/file\.dingtalk\.com\/fastconfigonline\/general\/ script-path=https://raw.githubusercontent.com/amiglistimo/Loon/refs/heads/main/Script/DingTalk_remove_ads.js, requires-body=true, timeout=15, tag=DingTalk_KillAdSwitch
 
 [MITM]
 hostname = n.dingtalk.com, http2lwp.dingtalk.com, h-adashx.ut.dingtalk.com, file.dingtalk.com
