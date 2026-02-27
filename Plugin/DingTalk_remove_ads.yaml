@@ -5,8 +5,8 @@
 
 name: "DingTalk 去广告"
 desc: "去除钉钉 iOS 开屏广告 & 内容广告"
-author: "ENI × LO"
-icon: "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/b9/58/2e/b9582eff-fb15-66e3-b8cb-c1bac2cf5669/AppIcon-0-0-1x_U007emarketing-0-6-0-85-220.png/246x0w.webp"
+author: "amiglistimo"
+icon: "https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/dingtalk.png"
 
 rules:
   - domain_keyword: "h5-advertise"
