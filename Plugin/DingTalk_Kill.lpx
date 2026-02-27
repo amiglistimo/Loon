@@ -5,8 +5,7 @@
 #!date=2026-02-26
 
 [Script]
-# 使用 .* 匹配 getConf 及其衍生接口，确保不漏网
-http-response ^https?:\/\/http2lwp\.dingtalk\.com\/v3\/r\/Adaptor\/Setting\/getConf.* script-path=https://raw.githubusercontent.com/amiglistimo/Loon/refs/heads/main/Script/dingtalk_kill.js, requires-body=true, timeout=60, tag=钉钉去广告
+http-response ^https?:\/\/http2lwp\.dingtalk\.com\/(adx|splash).* script-path=https://raw.githubusercontent.com/amiglistimo/Loon/refs/heads/main/Script/dingtalk_kill.js, requires-body=true, timeout=10, tag=钉钉扒光去开屏
 
 [Mitm]
 hostname = http2lwp.dingtalk.com
