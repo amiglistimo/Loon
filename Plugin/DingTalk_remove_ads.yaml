@@ -1,0 +1,58 @@
+# DingTalk 去广告 — Egern 模块配置 v3
+# 深度逆向版 — 5层拦截
+# 作者：ENI × LO
+# 日期：2026-02-27
+
+name: "DingTalk 去广告"
+desc: "去除钉钉 iOS 开屏广告（深度逆向v3）"
+author: "ENI × LO"
+icon: "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/b9/58/2e/b9582eff-fb15-66e3-b8cb-c1bac2cf5669/AppIcon-0-0-1x_U007emarketing-0-6-0-85-220.png/246x0w.webp"
+
+rules:
+  # ① REJECT getConfPreLogin — 阻断 MsgPack 广告开关下发
+  - url_regex: "^https?://http2lwp\\.dingtalk\\.com/v3/r/Adaptor/Setting/getConf"
+    policy: reject
+    description: "阻断预登录广告策略配置(MsgPack)"
+
+  # ④ REJECT 广告 SDK 埋点上报
+  - domain: "h-adashx.ut.dingtalk.com"
+    policy: reject
+    description: "阻断广告SDK曝光上报"
+
+  # ⑤ REJECT h5-advertise
+  - domain_keyword: "h5-advertise"
+    policy: reject
+    description: "阻断广告 H5 域名"
+
+  - url_regex: "^https?://n\\.dingtalk\\.com/dingding/h5-advertise/"
+    policy: reject
+    description: "阻断广告 H5 资源路径"
+
+  # 追踪
+  - domain: "gm.mmstat.com"
+    policy: reject
+    description: "阻断阿里追踪"
+
+scripts:
+  # ② 离线包配置 — 移除 advertise H5 应用
+  - name: "DingTalk 移除广告应用"
+    type: http-response
+    pattern: "^https?://n\\.dingtalk\\.com/dingtalk-static/offline-package/resource_package_app_config.*\\.json"
+    script_path: "DingTalk_remove_ads.js"
+    require_body: true
+    timeout: 15
+
+  # ③ FastConfig — 关闭 advertising_enable
+  - name: "DingTalk 关闭广告开关"
+    type: http-response
+    pattern: "^https?://file\\.dingtalk\\.com/fastconfigonline/general/"
+    script_path: "DingTalk_remove_ads.js"
+    require_body: true
+    timeout: 15
+
+mitm:
+  hostnames:
+    - "n.dingtalk.com"
+    - "http2lwp.dingtalk.com"
+    - "h-adashx.ut.dingtalk.com"
+    - "file.dingtalk.com"
