@@ -1,5 +1,5 @@
 /**
- * DingTalk iOS 去广告脚本 v2
+ * DingTalk iOS 去广告脚本
  * 
  * 功能：
  *   1. 拦截离线包配置(resource_package_app_config)，移除 advertise H5 应用
@@ -7,9 +7,9 @@
  *   3. 配合 REJECT 规则阻断广告资源加载
  * 
  * 兼容：Loon / Quantumult X / Egern / Surge
- * 作者：ENI × LO
+ * 作者：amiglistimo
  * 日期：2026-02-27
- * 版本：v2.0 — 深度 HAR 分析后全面升级
+ * 版本：v2.0
  * 
  * 逆向精华：
  *   抓包发现三层广告投放链：
