@@ -6,23 +6,25 @@
 #!icon=https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/dingtalk.png
 
 [Rule]
-# > 阻断钉钉泛广告配置与拉取域名
-DOMAIN, dtapp-pub.dingtalk.com, REJECT
+# > 阻断钉钉及阿里系 HTTPDNS (防绕过代理的域名直连)
 DOMAIN, amdc.alipay.com, REJECT
 DOMAIN, amdc.m.taobao.com, REJECT
 
-# > 阻断遥测、埋点、广告行为上报接口 (加速页面加载)
+# > 阻断广告打点与遥测
+DOMAIN, dtapp-pub.dingtalk.com, REJECT
 DOMAIN-SUFFIX, h-adashx.ut.dingtalk.com, REJECT
 DOMAIN-SUFFIX, loggw.alipay.com, REJECT
 DOMAIN-SUFFIX, loggw-ex.alipay.com, REJECT
 DOMAIN-SUFFIX, px.effirst.com, REJECT
-DOMAIN-SUFFIX, mtop.alibaba.cro.umid.reped, REJECT
 
-# > 精准阻击: 开屏广告离线包与缓存引擎 (使用 URL-REGEX 是最标准的做法)
-# 拦截内部广告号段 (如 50000...) 以及专门下发开屏物料的 yaoyy_xx 容器
-URL-REGEX, ^https?:\/\/minipkg\.dingtalk\.com\/yaoyy_\d+\/.*, REJECT
-URL-REGEX, ^https?:\/\/(package|pkg)\.dingtalk\.com\/5000\d{11,12}\/.*, REJECT
+[URL Rewrite]
+# > 终极杀招：拦截阿里系 (钉钉/淘宝/支付宝) 通用开屏运营位大图
+^https?:\/\/(gw|img)\.alicdn\.com\/imgextra\/.*\.(jpg|png) - reject
+
+# > 拦截专门下发开屏物料的要约(yaoyy)及其它广告容器包
+^https?:\/\/minipkg\.dingtalk\.com\/yaoyy_\d+\/.* - reject
+^https?:\/\/(package|pkg)\.dingtalk\.com\/500\d{12}\/.* - reject
 
 [Mitm]
-# 插件自带 MitM 声明，导入后自动追加到 Loon 的 MitM 列表中
-hostname = package.dingtalk.com, pkg.dingtalk.com, minipkg.dingtalk.com, *.dingtalk.com, *.alipay.com
+# 必须确保全局开启了 MitM 并信任了证书，否则 HTTPS 直连无法被正则拦截
+hostname = package.dingtalk.com, pkg.dingtalk.com, minipkg.dingtalk.com, *.dingtalk.com, *.alipay.com, *.alicdn.com
