@@ -18,11 +18,11 @@ DOMAIN-SUFFIX, loggw-ex.alipay.com, REJECT
 DOMAIN-SUFFIX, px.effirst.com, REJECT
 DOMAIN-SUFFIX, mtop.alibaba.cro.umid.reped, REJECT
 
-[URL Rewrite]
-# > 精准屏蔽通过包名下发的 3秒倒计时开屏广告离线包引擎
-# 根据抓包分析，广告容器通常潜伏于 package.dingtalk.com / pkg.dingtalk.com 下的内部号段
-^https?:\/\/(package|pkg)\.dingtalk\.com\/50000\d{11}\/.*\.(amr|zip) - reject
+# > 精准阻击: 开屏广告离线包与缓存引擎 (使用 URL-REGEX 是最标准的做法)
+# 拦截内部广告号段 (如 50000...) 以及专门下发开屏物料的 yaoyy_xx 容器
+URL-REGEX, ^https?:\/\/minipkg\.dingtalk\.com\/yaoyy_\d+\/.*, REJECT
+URL-REGEX, ^https?:\/\/(package|pkg)\.dingtalk\.com\/5000\d{11,12}\/.*, REJECT
 
 [Mitm]
 # 插件自带 MitM 声明，导入后自动追加到 Loon 的 MitM 列表中
-hostname = package.dingtalk.com, pkg.dingtalk.com, *.dingtalk.com, *.alipay.com
+hostname = package.dingtalk.com, pkg.dingtalk.com, minipkg.dingtalk.com, *.dingtalk.com, *.alipay.com
