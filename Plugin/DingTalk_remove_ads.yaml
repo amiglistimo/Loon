@@ -1,6 +1,9 @@
 mitm:
+  # 自带 MitM 声明
   hostnames:
     - "*.dingtalk.com"
+    - "package.dingtalk.com"
+    - "pkg.dingtalk.com"
     - "*.alipay.com"
     - "*.effirst.com"
 
