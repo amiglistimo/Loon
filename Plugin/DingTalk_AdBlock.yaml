@@ -4,6 +4,7 @@ mitm:
     - "*.dingtalk.com"
     - "package.dingtalk.com"
     - "pkg.dingtalk.com"
+    - "minipkg.dingtalk.com"
     - "*.alipay.com"
     - "*.effirst.com"
 
@@ -21,6 +22,8 @@ rule:
     policy: REJECT
     
 rewrite:
-  # 剥离开屏广告AMR容器
-  - match: ^https?:\/\/(package|pkg)\.dingtalk\.com\/50000\d{11}\/.*\.(amr|zip)
+  # 剥离开屏广告AMR容器引擎及物料包
+  - match: ^https?:\/\/minipkg\.dingtalk\.com\/yaoyy_\d+\/.*
+    policy: REJECT
+  - match: ^https?:\/\/(package|pkg)\.dingtalk\.com\/5000\d{11,12}\/.*
     policy: REJECT
