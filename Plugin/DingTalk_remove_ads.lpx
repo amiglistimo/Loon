@@ -1,40 +1,24 @@
 #!name=DingTalk 去广告
-#!desc=去除钉钉 iOS 开屏广告
+#!desc=精准屏蔽钉钉开屏广告（倒计时广告）及各类遥测打点特征，无损通讯功能。
 #!author=amiglistimo
 #!date=2026-02-27
 #!homepage=https://github.com/amiglistimo/Loon
 #!icon=https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/dingtalk.png
 
 [Rule]
-# ① REJECT getConfPreLogin — 阻断 MsgPack 广告开关下发
-# App 会 fallback 到本地默认配置（无广告状态）
-URL-REGEX,^https?:\/\/http2lwp\.dingtalk\.com\/v3\/r\/Adaptor\/Setting\/getConf,REJECT
+# > 阻断钉钉泛广告配置与拉取域名
+DOMAIN, dtapp-pub.dingtalk.com, REJECT
+DOMAIN, amdc.alipay.com, REJECT
+DOMAIN, amdc.m.taobao.com, REJECT
 
-# ④ REJECT 广告 SDK 埋点上报
-DOMAIN,h-adashx.ut.dingtalk.com,REJECT
+# > 阻断遥测、埋点、广告行为上报接口 (加速页面加载)
+DOMAIN-SUFFIX, h-adashx.ut.dingtalk.com, REJECT
+DOMAIN-SUFFIX, loggw.alipay.com, REJECT
+DOMAIN-SUFFIX, loggw-ex.alipay.com, REJECT
+DOMAIN-SUFFIX, px.effirst.com, REJECT
+DOMAIN-SUFFIX, mtop.alibaba.cro.umid.reped, REJECT
 
-# ⑤ REJECT h5-advertise 域名和路径
-URL-REGEX,^https?:\/\/n\.dingtalk\.com\/dingding\/h5-advertise\/,REJECT
-
-# 追踪域名
-DOMAIN,gm.mmstat.com,REJECT
-
-[Rewrite]
-# ① REJECT getConfPreLogin
-^https?:\/\/http2lwp\.dingtalk\.com\/v3\/r\/Adaptor\/Setting\/getConf reject
-
-# ⑤ REJECT 广告 H5 资源
-^https?:\/\/n\.dingtalk\.com\/dingding\/h5-advertise\/ reject
-
-# ④ REJECT 广告 SDK
-^https?:\/\/h-adashx\.ut\.dingtalk\.com\/ reject
-
-[Script]
-# ② 拦截离线包配置，移除 advertise H5 应用
-http-response ^https?:\/\/n\.dingtalk\.com\/dingtalk-static\/offline-package\/resource_package_app_config.*\.json script-path=https://raw.githubusercontent.com/amiglistimo/Loon/refs/heads/main/Script/DingTalk_remove_ads.js, requires-body=true, timeout=15, tag=DingTalk_KillAdApp
-
-# ③ 拦截 FastConfig，关闭 advertising_enable
-http-response ^https?:\/\/file\.dingtalk\.com\/fastconfigonline\/general\/ script-path=https://raw.githubusercontent.com/amiglistimo/Loon/refs/heads/main/Script/DingTalk_remove_ads.js, requires-body=true, timeout=15, tag=DingTalk_KillAdSwitch
-
-[MITM]
-hostname = n.dingtalk.com, http2lwp.dingtalk.com, h-adashx.ut.dingtalk.com, file.dingtalk.com
+[URL Rewrite]
+# > 精准屏蔽通过包名下发的 3秒倒计时开屏广告离线包引擎
+# 根据抓包分析，广告容器通常潜伏于 package.dingtalk.com / pkg.dingtalk.com 下的内部号段
+^https?:\/\/(package|pkg)\.dingtalk\.com\/50000\d{11}\/.*\.(amr|zip) - reject
