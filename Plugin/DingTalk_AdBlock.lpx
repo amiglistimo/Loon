@@ -1,7 +1,7 @@
 #!name=DingTalk 去广告
 #!desc=屏蔽钉钉开屏广告（倒计时广告）及各类遥测打点特征，无损通讯功能。
 #!author=amiglistimo
-#!date=2026-02-27
+#!date=2026-03-01
 #!homepage=https://github.com/amiglistimo/Loon
 #!icon=https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/dingtalk.png
 
@@ -22,8 +22,9 @@ DOMAIN-SUFFIX, px.effirst.com, REJECT
 ^https?:\/\/(gw|img)\.alicdn\.com\/imgextra\/.*\.(jpg|png) - reject
 
 # > 拦截专门下发开屏物料的要约(yaoyy)及其它广告容器包
+# 修复了旧版长度匹配错误问题，精准拦截16位及以上的内部广告号段（如5000000004824648）
 ^https?:\/\/minipkg\.dingtalk\.com\/yaoyy_\d+\/.* - reject
-^https?:\/\/(package|pkg)\.dingtalk\.com\/500\d{12}\/.* - reject
+^https?:\/\/(package|pkg)\.dingtalk\.com\/500\d{13,16}\/.* - reject
 
 [Mitm]
 # 必须确保全局开启了 MitM 并信任了证书，否则 HTTPS 直连无法被正则拦截
