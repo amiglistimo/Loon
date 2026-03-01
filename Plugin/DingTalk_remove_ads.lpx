@@ -1,5 +1,5 @@
 #!name=DingTalk 去广告
-#!desc=精准屏蔽钉钉开屏广告（倒计时广告）及各类遥测打点特征，无损通讯功能。
+#!desc=屏蔽钉钉开屏广告（倒计时广告）及各类遥测打点特征，无损通讯功能。
 #!author=amiglistimo
 #!date=2026-02-27
 #!homepage=https://github.com/amiglistimo/Loon
@@ -22,3 +22,7 @@ DOMAIN-SUFFIX, mtop.alibaba.cro.umid.reped, REJECT
 # > 精准屏蔽通过包名下发的 3秒倒计时开屏广告离线包引擎
 # 根据抓包分析，广告容器通常潜伏于 package.dingtalk.com / pkg.dingtalk.com 下的内部号段
 ^https?:\/\/(package|pkg)\.dingtalk\.com\/50000\d{11}\/.*\.(amr|zip) - reject
+
+[Mitm]
+# 插件自带 MitM 声明，导入后自动追加到 Loon 的 MitM 列表中
+hostname = package.dingtalk.com, pkg.dingtalk.com, *.dingtalk.com, *.alipay.com
