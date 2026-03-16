@@ -1,0 +1,16 @@
+#!name=大师兄&瓜子 去广告
+#!desc=大师兄&瓜子影视净化
+#!author=ddgksf2013
+#!date=2026-03-15
+#!homepage=https://ddgksf2013.top
+#!icon=https://iili.io/KLrZ1wb.png
+
+[Rewrite]
+^http:\/\/app\.dsx\.ac\/ndsx\.php\/v\d\/logs response-body-json-jq 'del(.data.banners) | if .data.is_top then .data = [] else . end'
+^https?:\/\/(gzapi|jk).*com\/App\/[Aa]d\/(?!play) reject-dict
+^https?:\/\/(gzapi|jk).*com\/App\/Resource\/CommentAd reject-dict
+^https?:\/\/(gzapi|jk).*com\/App\/IndexPlay\/vodAdvertisement reject-dict
+^https?:\/\/(gzapi|jk).*com\/App\/IndexList\/homeFloatAd reject-dict
+
+[Mitm]
+hostname = app.dsx.ac,jk.*.com,gzapi.*.com
