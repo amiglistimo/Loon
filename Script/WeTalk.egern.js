@@ -14,12 +14,12 @@ scriptings:
   - http_request:
       name: "WeTalk 抓包"
       match: "^https://api\\.wetalkapp\\.com/app/queryBalanceAndBonus"
-      script_url: "https://raw.githubusercontent.com/<你的仓库>/WeTalk.egern.js"
+      script_url: "https://raw.githubusercontent.com/amiglistimo/Loon/refs/heads/main/Script/WeTalk.egern.js"
       timeout: 10
   - schedule:
       name: "WeTalk 签到"
       cron: "20 8,20 * * *"
-      script_url: "https://raw.githubusercontent.com/<你的仓库>/WeTalk.egern.js"
+      script_url: "https://raw.githubusercontent.com/amiglistimo/Loon/refs/heads/main/Script/WeTalk.egern.js"
       timeout: 300
 
 ⚠️ schedule 的 timeout 默认只有 10 秒，而本脚本单账号约需 45 秒
