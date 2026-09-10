@@ -3,7 +3,6 @@
 #!category=Crack
 
 [Script]
-Moshi Pro = type=http-request, pattern="^https:\/\/api\.getmoshi\.app\/api\/v1\/licenses\/(?:me|activate|[^\/]+\/devices)(?:[\/?#]|$)", requires-body=1, max-size=0, timeout=30, script-path=https://raw.githubusercontent.com/Yu9191/Rewrite/refs/heads/main/moshi/moshi-pro.js
-
+Moshi Pro = type=http-request, pattern="^https:\/\/api\.getmoshi\.app\/api\/v1\/licenses\/(?:me|activate|[^\/]+\/devices)(?:[\/?#]|$)", requires-body=1, max-size=0, timeout=30, script-path=https://raw.githubusercontent.com/amiglistimo/Loon/refs/heads/main/Script/moshi-pro.js
 [MITM]
 hostname = %APPEND% api.getmoshi.app
